@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.test.page.login.mapper.UserMapper">
+
+	<select id="selectUser" parameterType="String" resultType="kr.co.test.page.login.model.AuthenticatedUser">
+		/* LoginMapper.selectUser */
+		SELECT MA.USERNAME
+				, MA.PASSWORD
+				, MA.ENABLED AS LOCK
+				, MAI.FULLNAME AS NAME
+		  FROM MEMBER_ACCOUNT MA
+		  INNER JOIN MEMBER_ADD_INFO MAI
+		     ON MA.USERNAME = MAI.USERNAME
+		 WHERE MA.USERNAME = #{username}
+	</select>
+	
+	<select id="selecttAuthorities" parameterType="String" resultType="String">
+		/* LoginMapper.selecttAuthorities */
+		SELECT ROLE 
+		  FROM MEMBER_ROLES 
+		 WHERE USERNAME = #{username}
+	</select>
+	
+	<update id="updateLastLoginDt" parameterType="paramMap">
+		/* LoginMapper.updateLastLoginDt */
+		UPDATE MEMBER_ACCOUNT
+		   SET LAST_LOGIN_DT = SYSDATE
+		  WHERE USERNAME = #{username}
+	</update>
+
+</mapper>

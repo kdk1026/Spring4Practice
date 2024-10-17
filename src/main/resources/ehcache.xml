@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd" 
+	updateCheck="false">
+	
+	<!-- <diskStore path="java.io.temdir"/> -->
+	<diskStore path="C:/tmpdir"/>
+	
+	<!-- defaultCache는 캐시 사용시 다른 적절한 캐시를 찾을수 없을 때 사용 -->
+	<defaultCache
+		maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000"
+		eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="600"
+		diskSpoolBufferSizeMB="20"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off"
+	>
+		<persistence strategy="localTempSwap"/>
+	</defaultCache>
+	
+	<cache name="baseCache"
+		maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000"
+		eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="600"
+		diskSpoolBufferSizeMB="20"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off"
+	>
+		<persistence strategy="localTempSwap"/>
+	</cache>
+	
+	<cache name="findMemberCache"
+		maxEntriesLocalHeap="10000"
+		maxEntriesLocalDisk="1000"
+		eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="600"
+		diskSpoolBufferSizeMB="20"
+		memoryStoreEvictionPolicy="LFU"
+		transactionalMode="off"
+	>
+		<persistence strategy="localTempSwap"/>
+	</cache>
+	
+</ehcache>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration file for LogBack (slf4J implementation)
+See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{HH:mm:ss:SS}][%-5level][%logger{0}:%method:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+	
+	<!-- Spring Framework -->
+    <logger name="org.springframework" level="error" />
+    
+    <logger name="org.mybatis.spring.SqlSessionUtils" level="debug" />
+    <logger name="org.springframework.jdbc.datasource.DataSourceTransactionManager" level="debug" />
+    
+    <!-- SQL Loggin -->
+    <logger name="java.sql" level="error" />
+    <logger name="jdbc.sqlonly" level="off" />
+	<Logger name="jdbc.sqltiming" level="info" />
+ 	<logger name="jdbc.audit" level="off" /> 
+ 	<logger name="jdbc.resultset" level="off"/> 
+ 	<logger name="jdbc.resultsettable" level="debug"/> 
+ 	<logger name="jdbc.connection" level="info"/> 
+ 	
+ 	<logger name="com.zaxxer.hikari" level="error" />
+ 	
+ 	<!-- Package -->
+ 	<logger name="kr.co.test" level="debug" additivity="false">
+ 		<appender-ref ref="console"/>
+ 	</logger>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+    
+</configuration>

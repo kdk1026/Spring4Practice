@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+		<!-- Default is SIMPLE -->
+		<setting name="defaultExecutorType" value="BATCH" />
+
+	  	<!-- Default is null, Unit is Second -->
+		<setting name="defaultStatementTimeout" value="60"/>
+		
+		<!-- Default is true, EhCache Enable When is false -->
+		<setting name="cacheEnabled" value="false" />
+	</settings>
+
+    <typeAliases>
+    	<typeAlias alias="paramMap" type="common.util.map.ParamMap" />
+        <typeAlias alias="resMap" type="common.util.map.ResultSetMap" />
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.ClobTypeHandler" jdbcType="CLOB" javaType="java.lang.String" />
+    </typeHandlers>
+
+</configuration>
